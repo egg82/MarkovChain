@@ -8,7 +8,7 @@
     <version>1.0.0</version>
     <name>MarkovChains</name>
     <build>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
