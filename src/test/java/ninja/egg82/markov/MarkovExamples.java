@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
-public class MarkovTest {
+public class MarkovExamples {
     // vars
 
     // constructor
@@ -59,7 +59,7 @@ public class MarkovTest {
         chain.add(new String[] { "Recession" }, "Recession", 500);
 
         Iterator<String> iterator = chain.chain(new String[] { "Bull" }).iterator();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println(iterator.next());
         }
     }

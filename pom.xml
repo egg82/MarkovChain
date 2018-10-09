@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ninja.egg82</groupId>
     <artifactId>MarkovChain</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>MarkovChain</name>
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -74,6 +74,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

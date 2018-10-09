@@ -259,6 +259,9 @@ public final class MarkovChain<E> {
         private Iterator<ChainState<E>> terminalsIterator = terminals.keySet().iterator();
 
         // constructor
+        public StatesIterator() {
+            nextItem = getNext();
+        }
 
         // public
         public boolean hasNext() {
