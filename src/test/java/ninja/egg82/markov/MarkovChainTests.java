@@ -3,15 +3,13 @@ package ninja.egg82.markov;
 import ninja.egg82.primitive.ints.Object2IntArrayMap;
 import ninja.egg82.primitive.ints.Object2IntMap;
 import org.json.simple.JSONObject;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.StreamSupport;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MarkovChainTests {
     // vars
@@ -25,17 +23,18 @@ public class MarkovChainTests {
 
         chain = new MarkovChain<>(1);
         chain.add(new Character[] { 'f', 'o', 'o', 'l' });
-        assertEquals(serialize(chain), "{'':{'f':1},'f':{'o':1},'l':{'':1},'o':{'o':1,'l':1}}");
+        Assertions.assertEquals("{'':{'f':1},'f':{'o':1},'l':{'':1},'o':{'o':1,'l':1}}", serialize(chain), "\"fool\" did not have the expected internal state.");
 
         chain = new MarkovChain<>(1);
         chain.add(new Character[] { 'f', 'o', 'o', 'd' });
-        assertEquals(serialize(chain), "{'':{'f':1},'d':{'':1},'f':{'o':1},'o':{'o':1,'d':1}}");
+        Assertions.assertEquals("{'':{'f':1},'d':{'':1},'f':{'o':1},'o':{'o':1,'d':1}}", serialize(chain), "\"food\" did not have the expected internal state.");
 
         chain = new MarkovChain<>(1);
         chain.add(new Character[] { 'l', 'o', 'o', 's', 'e' });
-        assertEquals(serialize(chain), "{'':{'l':1},'s':{'e':1},'e':{'':1},'l':{'o':1},'o':{'o':1,'s':1}}");
+        Assertions.assertEquals("{'':{'l':1},'s':{'e':1},'e':{'':1},'l':{'o':1},'o':{'o':1,'s':1}}", serialize(chain), "\"loose\" did not have the expected internal state.");
 
         System.out.println("\"add\" correctly adds values to the state.");
+        System.out.flush();
     }
     @Test
     public void testOppositeWeightResets() {
@@ -44,14 +43,16 @@ public class MarkovChainTests {
         chain.add(new Character[] { 'f', 'o', 'o', 'l' }, 1);
         chain.add(new Character[] { 'f', 'o', 'o', 'l' }, -1);
 
-        assertEquals(serialize(chain), "{}");
+        Assertions.assertEquals("{}", serialize(chain), "State did not reset when opposing weights were added.");
 
         System.out.println("Opposing weights correctly reset the state.");
+        System.out.flush();
     }
     @Test
     public void testOrderException() {
-        assertThrows(IllegalArgumentException.class, () -> new MarkovChain<Character>(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new MarkovChain<Character>(-1), "new instance of MarkovChain did not throw the expected exception.");
         System.out.println("Invalid order correctly throws exceptions.");
+        System.out.flush();
     }
 
     // private
