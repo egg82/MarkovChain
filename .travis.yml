@@ -1,0 +1,17 @@
+language: java
+dist: trusty
+deploy:
+  provider: releases
+  api_key:
+    secure: N1G1tgslTl+y6Sflj1ZVtqMHJTc+vpm33X8cB/WM/ir7z5zJoxDDUKa9Wh81rF+espeecPznDFnzqAyklFg28zpSO3l+1gQXtTgxldvywxoHXBIePmWaEjBvS8M06EnfvlpTffI9fbeP67wKxJbsXeysqchEoEWp8pUFjG08s/tjkFtaeDUKxUZpaTuIEdnUy4MZzvilAlv9ki2wFVQ7VJM8b8m/bxPvkzUJE0RKz2kLOKoItepA5uNMYODgejlmdKnchhHtLO/HlsFH3IYGHKsm8YZxihXXuX9wHV5Uu1i7tYRP2RVBRVQVpkM+S0sAiHGSvhdLG5VAgcNjTcwWSLiMvTh6gH5v70rAYQ+PXX6AgE4R9QuFoIUKi9+p1LQf2X5T3Vwaii4C1QbUU8paR8a/no0Bmn52T1DR98JBDWogBBpa7mzTwoYRkoC3HEZtB/PWUxIMQSzYS4zcJNcQGK4YM119EJtW35teDk+Qn7r0Hu1MK++IcRvDRawHIHUG7uZUlnjIU+eUmBoJ9j5p8tjzWliWpml/cRLP+ChC5swK0//TEx/XonVW1+45wg81IaCBQdCQVx5c5N7zqj6hzzb1anmMOWQeKXtLBbkRnVzUn1N/oUlyH2FgbGMTH5fb20WxT6Mo4xkSI+P/KlyRfSMi48k90TmAvRRUGV0JpjE=
+  file-glob: true
+  file: 'target/MarkovChain-*.jar'
+  on:
+    repo: egg82/MarkovChain
+addons:
+  sonarcloud:
+    organization: 'egg82-github'
+    token:
+      secure: "upKzN5qgxR/dXlwFyzowmtaT1Lok07/JfpiQg11aJpU78+3xLTKpj8PBjqGogd40w+xwEFR+A44f0PBfvEGG96OVjm8O0wi1+1DyP/S4grS4+kbgVvBSMkG1tjZBrDrbG88yMlbI7+WkWI+m6U2bwFJ8U0q++DY0B3A7Uwo95YwCNabq0G6mUyuYRxxvp5h/+CfB7MrLm568ZhL/axWv4/wTOig0zO7DuSyaTys1bl3djeRK/pauFJ0HUzGAnnlWH0ge49vXYSmz30wYuMRZxStPpF6KMUjwFzGtZNlv+rGIe1IJgYT61YTkRn0TUSifwyPKtokOYhOUy0Xi/pT01SjTOvysgGHih6xNUPyElsiSJa7Az8ol2snQbmBMy10AMp7lNdWJYJ4rNykKHdgBtI0v007O2TtawU9jKZoxkruMi7NFn0Kft0qkI/E5FOxVBH0ypBMPW6bEsK8befdZ2PzE7w9iBfM3osg7n3QzrZ89vGZXeAtBwWzLIPwQSS5uNO3ryvL28jqYXiQUywP7Nj3j/5owBm+HYEtW3k2VdDvCL4KBtQ0xgyLQABIh2E5I3M/JiINd59Vu3Um6qVguA99FWWhtxr6d15r73eY+YVr0AHjQk1+3DXAmEvRX5q4Bm8WxiPZvlNOJp+Pm+yBsvN0xL4RT1p0JVfMMIPcsJyg="
+script:
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
