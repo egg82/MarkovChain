@@ -1,16 +1,10 @@
 package ninja.egg82.markov;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Iterator;
 import java.util.stream.StreamSupport;
+import org.junit.jupiter.api.Test;
 
 public class MarkovExamples {
-    // vars
-
-    // constructor
-
-    // public
     @Test
     public void testWords() {
         MarkovChain<Character> chain = new MarkovChain<>(2);
@@ -63,7 +57,4 @@ public class MarkovExamples {
             System.out.println(iterator.next());
         }
     }
-
-    // private
-
 }

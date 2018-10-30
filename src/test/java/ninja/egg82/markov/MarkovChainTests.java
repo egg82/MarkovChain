@@ -1,22 +1,17 @@
 package ninja.egg82.markov;
 
-import ninja.egg82.primitive.ints.Object2IntArrayMap;
-import ninja.egg82.primitive.ints.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.stream.StreamSupport;
 
 public class MarkovChainTests {
-    // vars
-
-    // constructor
-
-    // public
     @Test
     public void testAddsValuesToState() {
         MarkovChain<Character> chain;
@@ -36,6 +31,7 @@ public class MarkovChainTests {
         System.out.println("\"add\" correctly adds values to the state.");
         System.out.flush();
     }
+
     @Test
     public void testOppositeWeightResets() {
         MarkovChain<Character> chain = new MarkovChain<>(1);
@@ -48,6 +44,7 @@ public class MarkovChainTests {
         System.out.println("Opposing weights correctly reset the state.");
         System.out.flush();
     }
+
     @Test
     public void testOrderException() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new MarkovChain<Character>(-1), "new instance of MarkovChain did not throw the expected exception.");
@@ -55,7 +52,6 @@ public class MarkovChainTests {
         System.out.flush();
     }
 
-    // private
     private String serialize(MarkovChain<Character> chain) {
         Iterator<ChainState<Character>> iterator = chain.getStates().iterator();
         Map<String, Object2IntMap<String>> map = new HashMap<>();
@@ -64,9 +60,9 @@ public class MarkovChainTests {
 
             Object2IntMap<Character> next = chain.getNextStates(i);
             if (next == null) {
-                next = new Object2IntArrayMap<>();
+                next = new Object2IntOpenHashMap<>();
             }
-            Object2IntMap<String> result = new Object2IntArrayMap<>();
+            Object2IntMap<String> result = new Object2IntOpenHashMap<>();
             for (Object2IntMap.Entry<Character> kvp : next.object2IntEntrySet()) {
                 result.put(kvp.getKey().toString(), kvp.getIntValue());
             }
