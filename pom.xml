@@ -83,12 +83,12 @@
 
     <repositories>
         <repository>
-            <id>egg82-ninja</id>
-            <url>https://www.myget.org/F/egg82-java/maven/</url>
+            <id>egg82-nexus</id>
+            <url>https://nexus.egg82.me/repository/maven-releases/</url>
         </repository>
         <repository>
-            <id>aikar</id>
-            <url>https://repo.aikar.co/content/groups/aikar/</url>
+            <id>egg82-ninja</id>
+            <url>https://www.myget.org/F/egg82-java/maven/</url>
         </repository>
     </repositories>
 
